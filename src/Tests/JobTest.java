@@ -43,4 +43,51 @@ public class JobTest {
                 new PositionType("Front-end developer"), new CoreCompetency("JavaScript"));
         assertFalse(jobOne.equals(jobThree));
     }
+
+    @Test
+    public void testForSpaces() {
+        assertTrue(jobOne.toString().startsWith("\n"));
+        assertTrue(jobOne.toString().endsWith("\n"));
+    }
+
+    @Test
+    public void testForData() {
+        String str = "\n" + "ID: " + jobOne.getId() + "\n" + "Name: " + jobOne.getName() + "\n" +
+                "Employer: " + jobOne.getEmployer() + "\n" + "Location: " + jobOne.getLocation() + "\n" +
+                "Position Type: " + jobOne.getPositionType() + "\n" + "Core Competency: " +
+                jobOne.getCoreCompetency() + "\n";
+        assertEquals(str,jobOne.toString());
+    }
+
+    @Test
+    public void testForEmptyField() {
+        Job jobFour = new Job("Ice cream tester", new Employer(""), new Location("Home"),
+                new PositionType("UX"), new CoreCompetency("Tasting ability"));
+        assertTrue(jobFour.toString().contains("Data not available"));
+    }
+
+    @Test
+    public void testForNoData() {
+        Job jobFive = new Job();
+        assertEquals("OOPS! This job does not seem to exist.",jobFive.toString());
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

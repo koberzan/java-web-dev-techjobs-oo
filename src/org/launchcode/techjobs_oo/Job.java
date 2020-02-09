@@ -63,9 +63,7 @@ public class Job {
         this.name = name;
     }
 
-    public Employer getEmployer() {
-        return employer;
-    }
+    public Employer getEmployer() { return employer; }
 
     public void setEmployer(Employer employer) {
         this.employer = employer;
@@ -95,5 +93,38 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
+    @Override
+    public String toString() {
+
+        if(name == null && employer == null && location == null && positionType == null
+        && coreCompetency == null) {
+            return "OOPS! This job does not seem to exist.";
+        }
+
+        String idLine = "\n" + "ID: " + id;
+        String nameLine = "\n" + "Name: " + name;
+        String employerLine = "\n" + "Employer: " + employer;
+        String locationLine = "\n" + "Location: " + location;
+        String positionTypeLine = "\n" + "Position Type: " + positionType;
+        String coreCompetencyLine = "\n" + "Core Competency: " + coreCompetency;
+        String endLine = "\n";
+
+        if(name.equals("")){
+            nameLine += "Data not available";
+        }
+        if(employer.getValue().equals("")){
+            employerLine += "Data not available";
+        }
+        if(location.getValue().equals("")){
+            locationLine += "Data not available";
+        }
+        if(positionType.getValue().equals("")){
+            positionTypeLine += "Data not available";
+        }
+        if(coreCompetency.getValue().equals("")){
+            coreCompetencyLine += "Data not available";
+        }
+        return idLine + nameLine + employerLine + locationLine + positionTypeLine + coreCompetencyLine + endLine;
+    }
 
 }
